@@ -8,7 +8,7 @@ const app = express();
 
 // CORS
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.BASE_URL,
   credentials: true
 }));
 app.use(express.json());
@@ -102,7 +102,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Serveur démarré sur http://localhost:${PORT}`);
-  console.log(`CORS activé pour: http://localhost:5173`);
+  // console.log(`Serveur démarré sur http://localhost:${PORT}`);
+  console.log(`CORS activé pour: ${process.env.BASE_URL}`);
   console.log(`En attente de la connexion MongoDB...`);
 });
