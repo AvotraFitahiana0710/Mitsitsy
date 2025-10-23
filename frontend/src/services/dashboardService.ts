@@ -66,7 +66,7 @@ export const dashboardService = {
       }, 0);
 
       // Calculer les autres métriques
-      const totalDepensesAnnee = await getYearlyTotal(currentYear);
+  const totalDepensesAnnee = await getYearlyTotal();
       const moyenneMensuelle = totalDepensesAnnee / (currentMonth || 1);
 
       const stats: DashboardStats = {
@@ -110,7 +110,7 @@ const getMonthlyExpenses = async (year: number) => {
 };
 
 // Helper pour le total annuel
-const getYearlyTotal = async (year: number): Promise<number> => {
+const getYearlyTotal = async (): Promise<number> => {
   try {
     // Simuler un total annuel - à remplacer par un appel API
     return 450000;

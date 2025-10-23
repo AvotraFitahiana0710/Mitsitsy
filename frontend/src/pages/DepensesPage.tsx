@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Plus, Edit2, Trash2, Filter, X, Calendar, Tag } from "lucide-react";
+import { Plus, Edit2, Trash2, Filter, Calendar, Tag } from "lucide-react";
 import type { Expense, CreateExpenseData } from "../types";
 import { expenseService } from "../services/expenseService";
 import { formatAriary } from "../utils/format";

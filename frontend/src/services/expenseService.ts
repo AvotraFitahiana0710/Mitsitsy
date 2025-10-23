@@ -5,11 +5,13 @@ export const expenseService = {
   // Créer une dépense
   createExpense: async (expenseData: CreateExpenseData): Promise<Expense> => {
     try {
-      const response = await expenseAPI.create(expenseData);
+      // Forcer la propriété 'date' à string si elle est undefined
+      const payload = { ...expenseData, date: expenseData.date || new Date().toISOString() };
+      const response = await expenseAPI.create(payload);
       if (response.success) {
         return response.data;
       }
-      throw new Error(response.message);
+      throw new Error((response as any).message || 'Erreur lors de la création de la dépense');
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Erreur lors de la création de la dépense');
     }
@@ -22,7 +24,7 @@ export const expenseService = {
       if (response.success) {
         return response;
       }
-      throw new Error(response.message);
+  throw new Error((response as any).message || 'Erreur lors de la récupération des dépenses');
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Erreur lors de la récupération des dépenses');
     }
@@ -35,7 +37,7 @@ export const expenseService = {
       if (response.success) {
         return response.data;
       }
-      throw new Error(response.message);
+  throw new Error((response as any).message || 'Erreur lors de la mise à jour de la dépense');
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Erreur lors de la mise à jour de la dépense');
     }
@@ -46,7 +48,7 @@ export const expenseService = {
     try {
       const response = await expenseAPI.delete(id);
       if (!response.success) {
-        throw new Error(response.message);
+  throw new Error((response as any).message || 'Erreur lors de la suppression de la dépense');
       }
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Erreur lors de la suppression de la dépense');
@@ -60,7 +62,7 @@ export const expenseService = {
       if (response.success) {
         return response.data;
       }
-      throw new Error(response.message);
+  throw new Error((response as any).message || 'Erreur lors de la récupération des statistiques');
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Erreur lors de la récupération des statistiques');
     }
