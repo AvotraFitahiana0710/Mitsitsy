@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { AuthResponse, User, Expense, Balance, ExpenseStats, Transaction } from '../types';
 
-const API_URL = `${import.meta.env.BASE_URL}/api`;
+const API_URL = `${import.meta.env.VITE_BASE_URL.replace(/\/$/, '')}/api`;
 
 const api = axios.create({
   baseURL: API_URL,

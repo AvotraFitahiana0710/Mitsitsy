@@ -8,7 +8,11 @@ const app = express();
 
 // CORS
 app.use(cors({
-  origin: process.env.BASE_URL,
+  // origin: process.env.BASE_URL,
+  origin: [
+    'http://localhost:5173',
+    'https://mitsitsy.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());
