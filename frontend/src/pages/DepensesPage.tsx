@@ -165,13 +165,6 @@ export const DepensesPage: React.FC = () => {
     return new Date(dateString).toLocaleDateString("fr-FR");
   };
 
-  // Formater le montant
-  {
-    {
-      formatAriary(expenses.montant);
-    }
-  }
-
   return (
     <div className="space-y-6">
       {/* En-tête avec bouton d'ajout et filtre */}
