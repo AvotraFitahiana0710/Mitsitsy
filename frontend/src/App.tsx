@@ -129,12 +129,23 @@ function AppContent() {
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <BalanceProvider>
-        <div className="App">
-          <AppContent />
-        </div>
-      </BalanceProvider>
+      <AppWithBalanceProvider />
     </AuthProvider>
+  );
+};
+
+const AppWithBalanceProvider: React.FC = () => {
+  const { user } = useAuth();
+  if (!user) {
+    // Pas de BalanceProvider sur la page de login
+    return <Login />;
+  }
+  return (
+    <BalanceProvider>
+      <div className="App">
+        <AppContent />
+      </div>
+    </BalanceProvider>
   );
 };
 
