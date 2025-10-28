@@ -8,4 +8,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    outDir: 'dist',
+  },
+  // Optionnel : base URL si vous déployez dans un sous-dossier
+  base: './',
 })
